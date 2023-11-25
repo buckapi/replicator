@@ -1,26 +1,55 @@
-# replicator
+# Sync API
 
-a [Sails v1](https://sailsjs.com) application
+Sync API es una interfaz de programación de aplicaciones (API) que permite a los usuarios realizar operaciones de sincronización de archivos utilizando `rsync`. Esta API facilita la automatización de tareas de sincronización para proyectos y directorios específicos.
 
+## Instalación
 
-### Links
+Para comenzar a usar la Sync API, sigue estos pasos:
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+1. Clona el repositorio en tu máquina local:
+   ```
+   git clone https://github.com/buckapi/replicator.git
+   ```
+2. Instala las dependencias necesarias:
+   ```
+   cd sync-api
+   npm install
+   ```
 
+## Uso
 
-### Version info
+Para utilizar la API, envía una solicitud POST con los siguientes parámetros:
 
-This app was originally generated on Sat Nov 25 2023 21:25:41 GMT+0000 (Coordinated Universal Time) using Sails v1.5.8.
+- `project_name`: Nombre del proyecto a sincronizar.
+- `source_dir`: Directorio de origen de los archivos.
+- `dest_dir`: Directorio de destino para los archivos.
+- `exclude_dir`: Directorio que debe excluirse de la sincronización.
 
-<!-- Internally, Sails used [`sails-generate@2.0.8`](https://github.com/balderdashy/sails-generate/tree/v2.0.8/lib/core-generators/new). -->
+Ejemplo de solicitud utilizando `curl`:
 
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+    "project_name": "mi-proyecto",
+    "source_dir": "/ruta/al/directorio/fuente",
+    "dest_dir": "/ruta/al/directorio/destino",
+    "exclude_dir": "/ruta/al/directorio/excluir"
+}' http://tu-servidor/api/runRsync
+```
 
+## Contribuir
 
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
+Si deseas contribuir a este proyecto, considera los siguientes pasos:
 
+1. Haz un "fork" del repositorio.
+2. Crea una rama para tu característica (`git checkout -b mi-nueva-caracteristica`).
+3. Realiza tus cambios y haz un commit de tus cambios (`git commit -am 'Añadir alguna característica'`).
+4. Haz push a la rama (`git push origin mi-nueva-caracteristica`).
+5. Crea una nueva Pull Request.
+
+## Soporte
+
+Si encuentras algún problema o tienes alguna pregunta, por favor abre un issue en el repositorio de GitHub o contacta a [tu-email@dominio.com](mailto:tu-email@dominio.com).
+
+## Licencia
+
+Este proyecto está licenciado bajo [INSERTE NOMBRE DE LICENCIA] - ver el archivo LICENSE.md para detalles.
