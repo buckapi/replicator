@@ -14,6 +14,11 @@ module.exports = {
     let base_dest_dir = req.body.dest_dir;
     let exclude_dir = req.body.exclude_dir;
 
+    // Asegúrate de que la ruta del directorio origen termine con '/'
+    if (!source_dir.endsWith('/')) {
+      source_dir += '/';
+    }
+
     // Construye la ruta del directorio destino incluyendo el nombre del proyecto
     let dest_dir = `${base_dest_dir}/${project_name}`;
 
